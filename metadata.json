@@ -1,0 +1,6 @@
+{
+  "name": "Guías Rápidas para Fotógrafos",
+  "description": "La colección completa de hojas de referencia y guías rápidas para fotógrafos en español con oferta especial flash.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
