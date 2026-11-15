@@ -20,14 +20,14 @@ export const PanoramicBanner: React.FC<PanoramicBannerProps> = ({ onScrollToTopi
       </div>
 
       {/* Center Action Button with glow */}
-      <div className="relative z-10 flex flex-col items-center gap-3 px-4 text-center">
+      <div className="relative z-10 w-full max-w-full flex flex-col items-center gap-3 px-4 text-center">
         <button
           onClick={onOpenDetails}
-          className="group inline-flex items-center gap-2.5 bg-[#df5615] hover:bg-[#eb6120] text-white px-6 sm:px-9 py-3 sm:py-4 rounded-full font-extrabold text-base sm:text-lg shadow-[0_0_30px_rgba(223,86,21,0.5)] hover:shadow-[0_0_40px_rgba(223,86,21,0.8)] transition-all transform hover:scale-105 cursor-pointer border border-amber-300/40"
+          className="group max-w-full inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-[#df5615] hover:bg-[#eb6120] text-white px-5 sm:px-9 py-3 sm:py-4 rounded-full font-extrabold text-sm sm:text-lg shadow-[0_0_30px_rgba(223,86,21,0.5)] hover:shadow-[0_0_40px_rgba(223,86,21,0.8)] transition-all transform hover:scale-105 cursor-pointer border border-amber-300/40"
         >
-          <Sparkles className="w-5 h-5 text-amber-200 animate-spin" style={{ animationDuration: '6s' }} />
+          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-200 shrink-0 animate-spin" style={{ animationDuration: '6s' }} />
           <span>Captura las Situaciones Más Difíciles</span>
-          <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs ml-1">
+          <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs ml-1 shrink-0">
             <Info className="w-3.5 h-3.5" />
           </span>
         </button>

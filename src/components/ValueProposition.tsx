@@ -5,7 +5,7 @@ export const ValueProposition: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="w-full bg-[#fcfaf7] py-16 sm:py-20 border-b border-stone-200">
+    <section className="w-full overflow-x-hidden bg-[#fcfaf7] py-16 sm:py-20 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Main Section Heading */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-stone-900 text-center max-w-4xl mx-auto leading-tight mb-12 sm:mb-16">
@@ -18,7 +18,7 @@ export const ValueProposition: React.FC = () => {
         {/* 2-Column Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Text Column */}
-          <div className="lg:col-span-6 space-y-5 text-stone-700 text-base sm:text-lg leading-relaxed font-normal">
+          <div className="lg:col-span-6 space-y-5 text-stone-700 text-base sm:text-lg leading-relaxed font-normal min-w-0">
             <p>
               ¿Alguna vez has tenido tu cámara en las manos sin saber qué configuración utilizar para conseguir la foto que imaginas?
             </p>

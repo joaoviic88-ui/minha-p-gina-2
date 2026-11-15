@@ -7,7 +7,7 @@ interface DecisionSectionProps {
 
 export const DecisionSection: React.FC<DecisionSectionProps> = ({ onBuyClick }) => {
   return (
-    <section className="w-full bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
+    <section className="w-full overflow-x-hidden bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight text-center mb-10 sm:mb-14">

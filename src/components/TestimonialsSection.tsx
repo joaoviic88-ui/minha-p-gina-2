@@ -19,7 +19,7 @@ export const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-[#161616] text-white py-16 sm:py-24 border-b border-stone-800">
+    <section className="w-full overflow-x-hidden bg-[#161616] text-white py-16 sm:py-24 border-b border-stone-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -35,14 +35,14 @@ export const TestimonialsSection: React.FC = () => {
           {/* Left Arrow */}
           <button
             onClick={prev}
-            className="absolute -left-3 sm:-left-6 z-10 w-10 h-10 rounded-full bg-stone-800/80 hover:bg-[#df5615] text-stone-300 hover:text-white flex items-center justify-center transition-all cursor-pointer border border-stone-700 shadow-lg"
+            className="absolute left-0 sm:-left-4 md:-left-6 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-stone-800/90 hover:bg-[#df5615] text-stone-300 hover:text-white flex items-center justify-center transition-all cursor-pointer border border-stone-700 shadow-lg"
             aria-label="Testimonio anterior"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl px-4 sm:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl px-6 sm:px-8">
             {visibleTestimonials.map((t) => (
               <div
                 key={t.id}
@@ -83,10 +83,10 @@ export const TestimonialsSection: React.FC = () => {
           {/* Right Arrow */}
           <button
             onClick={next}
-            className="absolute -right-3 sm:-right-6 z-10 w-10 h-10 rounded-full bg-stone-800/80 hover:bg-[#df5615] text-stone-300 hover:text-white flex items-center justify-center transition-all cursor-pointer border border-stone-700 shadow-lg"
+            className="absolute right-0 sm:-right-4 md:-right-6 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-stone-800/90 hover:bg-[#df5615] text-stone-300 hover:text-white flex items-center justify-center transition-all cursor-pointer border border-stone-700 shadow-lg"
             aria-label="Testimonio siguiente"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>

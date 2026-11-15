@@ -78,11 +78,11 @@ export const PrintAndTakeSection: React.FC<PrintAndTakeSectionProps> = ({ onOpen
   };
 
   return (
-    <section className="w-full bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
+    <section className="w-full overflow-x-hidden bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Text Column */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 min-w-0">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight leading-tight">
               Imprímelas y <br />
               <span className="text-[#df5615]">llévalas contigo</span>

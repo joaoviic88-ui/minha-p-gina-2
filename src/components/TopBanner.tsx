@@ -11,11 +11,11 @@ export const TopBanner: React.FC<TopBannerProps> = ({ hours, minutes, seconds })
   const pad = (n: number) => n.toString().padStart(2, '0');
 
   return (
-    <aside aria-label="Aviso de oferta especial" className="w-full bg-[#df5615] text-white py-2.5 px-3 sm:px-6 shadow-md sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5 text-center sm:text-left">
-        <div className="flex items-center gap-2 font-bold text-sm sm:text-base tracking-wide uppercase">
-          <Clock className="w-5 h-5 animate-pulse text-amber-200 shrink-0" />
-          <span>¡ÚLTIMA OPORTUNIDAD... La venta flash termina hoy!</span>
+    <aside aria-label="Aviso de oferta especial" className="sticky top-0 left-0 right-0 w-full max-w-full bg-[#df5615] text-white py-2.5 px-3 sm:px-6 shadow-md z-50">
+      <div className="w-full max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-2.5 text-center sm:text-left">
+        <div className="flex items-center justify-center sm:justify-start gap-2 font-bold text-xs sm:text-base tracking-wide uppercase max-w-full">
+          <Clock className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse text-amber-200 shrink-0" />
+          <span className="leading-snug">¡ÚLTIMA OPORTUNIDAD... La venta flash termina hoy!</span>
         </div>
 
         <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold">

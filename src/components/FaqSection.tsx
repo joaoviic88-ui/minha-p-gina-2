@@ -10,7 +10,7 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
+    <section className="w-full overflow-x-clip bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Left Title Column */}

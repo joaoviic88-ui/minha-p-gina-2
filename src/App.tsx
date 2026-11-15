@@ -105,7 +105,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-stone-900 font-sans antialiased selection:bg-[#df5615] selection:text-white">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#faf8f5] text-stone-900 font-sans antialiased selection:bg-[#df5615] selection:text-white">
       {/* 1. Sticky Top Flash Sale Announcement Bar */}
       <TopBanner hours={hours} minutes={minutes} seconds={seconds} />
 
@@ -167,20 +167,20 @@ export default function App() {
 
       {/* Sticky Bottom Quick-Buy Bar (Mobile & Tablet) */}
       {showStickyBar && (
-        <aside aria-label="Barra de compra rápida" className="fixed bottom-0 inset-x-0 bg-stone-900/95 backdrop-blur-md text-white py-3 px-4 z-40 border-t border-stone-800 shadow-2xl flex items-center justify-between sm:justify-center gap-4 transition-transform animate-fadeIn">
-          <div className="flex items-center gap-2">
+        <aside aria-label="Barra de compra rápida" className="fixed bottom-0 left-0 right-0 w-full max-w-full bg-stone-900/95 backdrop-blur-md text-white py-3 px-3 sm:px-4 z-40 border-t border-stone-800 shadow-2xl flex items-center justify-between sm:justify-center gap-2 sm:gap-4 transition-transform animate-fadeIn">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 shrink-0">
             <span className="text-xs text-stone-400 line-through hidden sm:inline">$125</span>
-            <span className="text-lg font-black text-amber-400">Desde $10</span>
-            <span className="text-[11px] bg-[#df5615] text-white px-2 py-0.5 rounded font-black uppercase">
+            <span className="text-base sm:text-lg font-black text-amber-400 whitespace-nowrap">Desde $10</span>
+            <span className="text-[10px] sm:text-[11px] bg-[#df5615] text-white px-1.5 sm:px-2 py-0.5 rounded font-black uppercase shrink-0">
               OFERTA
             </span>
           </div>
 
           <button
             onClick={() => scrollToPricing()}
-            className="bg-[#df5615] hover:bg-[#c8480d] text-white px-5 py-2 rounded-xl font-black text-sm flex items-center gap-2 shadow-lg cursor-pointer transition-all"
+            className="bg-[#df5615] hover:bg-[#c8480d] text-white px-3.5 sm:px-5 py-2 rounded-xl font-black text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-lg cursor-pointer transition-all shrink-0 whitespace-nowrap"
           >
-            <ShoppingCart className="w-4 h-4 stroke-[2.5]" />
+            <ShoppingCart className="w-4 h-4 stroke-[2.5] shrink-0" />
             <span>Ver Planes y Precios</span>
           </button>
         </aside>

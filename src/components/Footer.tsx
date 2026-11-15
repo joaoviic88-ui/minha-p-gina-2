@@ -6,7 +6,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenPolicy }) => {
   return (
-    <footer className="w-full bg-[#fbf9f6] text-stone-600 py-10 border-t border-stone-200 text-xs sm:text-sm">
+    <footer className="w-full overflow-x-hidden bg-[#fbf9f6] text-stone-600 py-10 border-t border-stone-200 text-xs sm:text-sm">
       <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
         {/* Navigation Links */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-medium text-stone-700">

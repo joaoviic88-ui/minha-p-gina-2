@@ -11,7 +11,7 @@ export const OfferDealSection: React.FC<OfferDealSectionProps> = ({ hours, minut
   const pad = (n: number) => n.toString().padStart(2, '0');
 
   return (
-    <section className="w-full bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
+    <section className="w-full overflow-x-hidden bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         {/* Title */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight leading-tight mb-8">

@@ -53,7 +53,7 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
   };
 
   return (
-    <section id="temas-cubiertos" className="w-full bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
+    <section id="temas-cubiertos" className="w-full overflow-x-hidden bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -67,14 +67,14 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
         </div>
 
         {/* Real Cheat Sheets Fan Visual Showcase */}
-        <div className="relative max-w-4xl mx-auto mb-16 text-center">
-          <div className="relative inline-block cursor-pointer group" onClick={() => onPreviewSheet(2)}>
+        <div className="relative w-full max-w-4xl mx-auto mb-16 text-center">
+          <div className="relative block w-full max-w-full cursor-pointer group" onClick={() => onPreviewSheet(2)}>
             {/* Visual Fan with the 5 Authentic Product Images */}
-            <div className="relative z-10 flex items-center justify-center -space-x-8 sm:-space-x-12 md:-space-x-16 py-6 px-2 overflow-hidden">
+            <div className="relative z-10 w-full max-w-full flex items-center justify-center -space-x-7 sm:-space-x-12 md:-space-x-16 py-6 px-1 sm:px-2 overflow-hidden">
               {/* Card 1: 01 Auroras boreales */}
               <div 
                 onClick={(e) => { e.stopPropagation(); onPreviewSheet(0); }}
-                className="w-32 sm:w-48 md:w-56 bg-white rounded-xl shadow-xl overflow-hidden border border-stone-300 transform -rotate-12 hover:-rotate-4 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 cursor-pointer"
+                className="w-20 sm:w-48 md:w-56 bg-white rounded-xl shadow-xl overflow-hidden border border-stone-300 transform -rotate-12 hover:-rotate-4 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 cursor-pointer"
                 title="Ver ficha: 01 Auroras boreales"
               >
                 <img 
@@ -88,7 +88,7 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
               {/* Card 2: 02 Relámpagos */}
               <div 
                 onClick={(e) => { e.stopPropagation(); onPreviewSheet(1); }}
-                className="w-36 sm:w-52 md:w-60 bg-white rounded-xl shadow-2xl overflow-hidden border border-stone-300 transform -rotate-6 hover:-rotate-2 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 z-20 cursor-pointer"
+                className="w-24 sm:w-52 md:w-60 bg-white rounded-xl shadow-2xl overflow-hidden border border-stone-300 transform -rotate-6 hover:-rotate-2 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 z-20 cursor-pointer"
                 title="Ver ficha: 02 Relámpagos"
               >
                 <img 
@@ -102,7 +102,7 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
               {/* Card 3: 03 La Vía Láctea (Centerpiece) */}
               <div 
                 onClick={(e) => { e.stopPropagation(); onPreviewSheet(2); }}
-                className="w-40 sm:w-56 md:w-64 bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-amber-400 transform scale-105 hover:scale-110 hover:z-40 transition-all duration-300 shrink-0 z-30 ring-4 ring-amber-400/30 cursor-pointer"
+                className="w-28 sm:w-56 md:w-64 bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-amber-400 transform scale-105 hover:scale-110 hover:z-40 transition-all duration-300 shrink-0 z-30 ring-4 ring-amber-400/30 cursor-pointer"
                 title="Ver ficha: 03 La Vía Láctea"
               >
                 <img 
@@ -116,7 +116,7 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
               {/* Card 4: 04 Rastros estelares */}
               <div 
                 onClick={(e) => { e.stopPropagation(); onPreviewSheet(3); }}
-                className="w-36 sm:w-52 md:w-60 bg-white rounded-xl shadow-2xl overflow-hidden border border-stone-300 transform rotate-6 hover:rotate-2 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 z-20 cursor-pointer"
+                className="w-24 sm:w-52 md:w-60 bg-white rounded-xl shadow-2xl overflow-hidden border border-stone-300 transform rotate-6 hover:rotate-2 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 z-20 cursor-pointer"
                 title="Ver ficha: 04 Rastros estelares"
               >
                 <img 
@@ -130,7 +130,7 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
               {/* Card 5: 05 Largas exposiciones diurnas */}
               <div 
                 onClick={(e) => { e.stopPropagation(); onPreviewSheet(4); }}
-                className="w-32 sm:w-48 md:w-56 bg-white rounded-xl shadow-xl overflow-hidden border border-stone-300 transform rotate-12 hover:rotate-4 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 cursor-pointer"
+                className="w-20 sm:w-48 md:w-56 bg-white rounded-xl shadow-xl overflow-hidden border border-stone-300 transform rotate-12 hover:rotate-4 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 cursor-pointer"
                 title="Ver ficha: 05 Largas exposiciones diurnas"
               >
                 <img 

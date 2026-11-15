@@ -71,14 +71,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCtaClick }) => {
           </div>
 
           {/* Quick CTA button */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 w-full">
             <button
               onClick={onCtaClick}
-              className="group bg-gradient-to-r from-[#df5615] to-[#c7450a] hover:from-[#e96222] hover:to-[#df5615] text-white px-8 py-4 rounded-xl font-extrabold text-lg sm:text-xl shadow-xl hover:shadow-orange-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3 cursor-pointer border border-amber-300/30"
+              className="group max-w-full bg-gradient-to-r from-[#df5615] to-[#c7450a] hover:from-[#e96222] hover:to-[#df5615] text-white px-5 sm:px-8 py-4 rounded-xl font-extrabold text-base sm:text-xl shadow-xl hover:shadow-orange-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer border border-amber-300/30"
             >
-              <ShoppingBag className="w-6 h-6 text-amber-200" />
+              <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 text-amber-200 shrink-0" />
               <span>Conseguir la Oferta Flash por Solo $10</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
             </button>
             
             <div className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm text-stone-300">
