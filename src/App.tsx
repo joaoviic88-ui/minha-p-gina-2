@@ -182,14 +182,14 @@ export default function App() {
       <PhotoLightboxModal
         photo={activePhoto}
         onClose={() => setActivePhoto(null)}
-        onGetDeal={() => setIsCheckoutOpen(true)}
+        onGetDeal={() => scrollToPricing()
       />
 
       <CheatSheetPreviewModal
         isOpen={isCheatSheetPreviewOpen}
         initialIndex={previewSheetIndex}
         onClose={() => setIsCheatSheetPreviewOpen(false)}
-        onGetDeal={() => setIsCheckoutOpen(true)}
+        onGetDeal={() => scrollToPricing()
       />
 
       <PolicyModal
