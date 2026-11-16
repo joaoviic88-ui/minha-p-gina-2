@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { TopBanner } from './components/TopBanner';
 import { HeroSection } from './components/HeroSection';
 import { ValueProposition } from './components/ValueProposition';
-import { PanoramicBanner } from './components/PanoramicBanner';
 import { CheatSheetsShowcase } from './components/CheatSheetsShowcase';
-import { PrintAndTakeSection } from './components/PrintAndTakeSection';
-import { BonusSection } from './components/BonusSection';
-import { FaqSection } from './components/FaqSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { OfferDealSection } from './components/OfferDealSection';
 import { PricingCardSection } from './components/PricingCardSection';
+import { BonusSection } from './components/BonusSection';
+import { HowItWorksSection } from './components/HowItWorksSection';
+import { OfferDealSection } from './components/OfferDealSection';
+import { TestimonialsSection } from './components/TestimonialsSection';
+import { FaqSection } from './components/FaqSection';
 import { DecisionSection } from './components/DecisionSection';
 import { Footer } from './components/Footer';
 import { CheckoutModal } from './components/CheckoutModal';
@@ -97,32 +96,19 @@ export default function App() {
     }
   };
 
-  const scrollToTopics = () => {
-    const topicsEl = document.getElementById('temas-cubiertos');
-    if (topicsEl) {
-      topicsEl.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#faf8f5] text-stone-900 font-sans antialiased selection:bg-[#df5615] selection:text-white">
-      {/* 1. Sticky Top Flash Sale Announcement Bar */}
+      {/* Sticky Top Flash Sale Announcement Bar */}
       <TopBanner hours={hours} minutes={minutes} seconds={seconds} />
 
       <main>
-        {/* 2. Hero Section with Photographer background & 4 bullets */}
+        {/* SEÇÃO 1 — Hero / Primeira Dobra */}
         <HeroSection onCtaClick={() => scrollToPricing()} />
 
-        {/* 3. Value Proposition: Print one out whenever you need it + Video preview */}
+        {/* SEÇÃO 2 — O Problema e a Solução */}
         <ValueProposition />
 
-        {/* 5. Panoramic Starry Night Banner with center button */}
-        <PanoramicBanner
-          onScrollToTopics={scrollToTopics}
-          onOpenDetails={() => setIsCheatSheetPreviewOpen(true)}
-        />
-
-        {/* 6. 125 Cheat Sheets Showcase with 4 tabs & 9 photographic scenario cards */}
+        {/* SEÇÃO 3 — Conheça a Coleção */}
         <CheatSheetsShowcase
           onPhotoClick={(photo) => setActivePhoto(photo)}
           onPreviewSheet={(idx) => {
@@ -131,34 +117,27 @@ export default function App() {
           }}
         />
 
-        {/* 7. Print them out and take them with you + The 3 Real Cheat Sheets Preview */}
-        <PrintAndTakeSection
-          onOpenPreview={(idx) => {
-            setPreviewSheetIndex(idx);
-            setIsCheatSheetPreviewOpen(true);
-          }}
-        />
-
-        {/* 8. Free Bonus Today: 3 Camera Fundamentals Cheat Sheets */}
-        <BonusSection />
-
-        {/* 9. Frequently Asked Questions (FAQ Accordions) */}
-        <FaqSection />
-
-        {/* 10. Social Proof Testimonials Carousel (Ken Jones & Eddie Miller) */}
-        <TestimonialsSection />
-
-        {/* 11. The current deal for the flash sale + 90-Day Money Back Rosette + Countdown */}
-        <OfferDealSection hours={hours} minutes={minutes} seconds={seconds} />
-
-        {/* 12. Main Pricing Section: PLAN BÁSICO (US$ 10) vs PLAN COMPLETO (US$ 19) */}
+        {/* SEÇÃO 4 — Planos e Preços */}
         <div id="seccion-oferta">
-          <PricingCardSection
-            onSelectPlan={handleSelectPlan}
-          />
+          <PricingCardSection onSelectPlan={handleSelectPlan} />
         </div>
 
-        {/* 13. Decision Time: Option 1 vs Option 2 */}
+        {/* SEÇÃO 5 — Os 3 Bônus Exclusivos */}
+        <BonusSection />
+
+        {/* SEÇÃO 6 — Como Funciona */}
+        <HowItWorksSection />
+
+        {/* SEÇÃO 7 — Garantia */}
+        <OfferDealSection />
+
+        {/* SEÇÃO 8 — Depoimentos */}
+        <TestimonialsSection />
+
+        {/* SEÇÃO 9 — Perguntas Frequentes */}
+        <FaqSection />
+
+        {/* SEÇÃO 10 — CTA Final */}
         <DecisionSection onBuyClick={() => scrollToPricing()} />
       </main>
 

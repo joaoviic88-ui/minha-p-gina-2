@@ -53,16 +53,16 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
         </div>
 
         {/* Modal Scrollable Content */}
-        <div className="p-5 sm:p-7 overflow-y-auto space-y-5 text-stone-900">
+        <div className="p-4 sm:p-7 overflow-y-auto space-y-4 sm:space-y-5 text-stone-900">
           {/* Main Headline & Subtitle */}
           <div className="text-center space-y-2">
             <h2
               id="upgrade-modal-title"
-              className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight leading-tight"
+              className="text-xl sm:text-3xl font-black text-stone-900 tracking-tight leading-tight"
             >
               ¡ESPERA! Por solo <span className="text-[#df5615] underline decoration-amber-400 decoration-wavy decoration-2">$5 más</span>, llévate la colección COMPLETA.
             </h2>
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-lg mx-auto">
+            <p className="text-sm text-stone-600 leading-relaxed max-w-lg mx-auto">
               Estás a un paso de conseguir 85 guías de fotografía. Pero tenemos una oportunidad especial para ti: por solo $5 adicionales, puedes llevarte los 125 guías completos y 3 bonos exclusivos.
             </p>
           </div>
@@ -136,12 +136,12 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
 
             {/* 3 Exclusive Bonuses */}
             <div className="bg-amber-50/90 border-2 border-amber-300 rounded-2xl p-4 shadow-xs">
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-amber-950 flex items-center gap-1.5">
-                  <Gift className="w-4 h-4 text-[#df5615]" />
+                  <Gift className="w-4 h-4 text-[#df5615] shrink-0" />
                   <span>🎁 Y ADEMÁS, 3 BONOS EXCLUSIVOS GRATIS:</span>
                 </span>
-                <span className="text-[10px] font-black uppercase bg-emerald-600 text-white px-2 py-0.5 rounded">
+                <span className="text-xs font-black uppercase bg-emerald-600 text-white px-2 py-0.5 rounded shrink-0">
                   GRATIS
                 </span>
               </div>
@@ -176,24 +176,24 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
             {/* Primary Upgrade CTA */}
             <button
               onClick={onAcceptUpgrade}
-              className="w-full bg-[#df5615] hover:bg-[#c8480d] text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide shadow-xl hover:shadow-orange-500/30 transition-all transform hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2 border-2 border-amber-300 ring-4 ring-orange-500/20"
+              className="w-full min-h-[54px] bg-[#df5615] hover:bg-[#c8480d] text-white py-4 px-5 sm:px-6 rounded-2xl font-black text-sm sm:text-lg tracking-wide shadow-xl transition-colors cursor-pointer flex items-center justify-center gap-2 border-2 border-amber-300 ring-4 ring-orange-500/20"
             >
               <span>¡SÍ! QUIERO LOS 125 GUÍAS POR SOLO $15</span>
-              <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+              <ArrowRight className="w-5 h-5 stroke-[2.5] shrink-0" />
             </button>
 
             {/* Secondary Decline Option */}
             <button
               onClick={onDeclineUpgrade}
-              className="w-full text-stone-500 hover:text-stone-800 text-xs sm:text-sm font-semibold py-2 px-4 transition-colors cursor-pointer text-center underline underline-offset-4 decoration-stone-300 hover:decoration-stone-600"
+              className="w-full text-stone-500 hover:text-stone-800 text-xs sm:text-sm font-semibold py-2.5 px-4 transition-colors cursor-pointer text-center underline underline-offset-4 decoration-stone-300 hover:decoration-stone-600"
             >
               No, gracias. Prefiero continuar con el Plan Básico de $10.
             </button>
           </div>
 
           {/* Guarantee Note */}
-          <div className="flex items-center justify-center gap-1.5 text-[11px] text-stone-500 pt-1 border-t border-stone-100">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <div className="flex items-center justify-center gap-1.5 text-xs text-stone-500 pt-1 border-t border-stone-100">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>Garantía total de devolución de 30 días incluida en ambas opciones</span>
           </div>
         </div>

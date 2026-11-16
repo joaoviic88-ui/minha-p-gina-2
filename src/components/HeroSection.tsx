@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, CheckCircle2, ShoppingBag } from 'lucide-react';
+import { ArrowRight, CheckCircle2, BookOpen, Zap, Award } from 'lucide-react';
 
 interface HeroSectionProps {
   onCtaClick: () => void;
@@ -7,83 +7,107 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onCtaClick }) => {
   return (
-    <section className="relative w-full min-h-[640px] md:min-h-[720px] flex items-center overflow-hidden bg-stone-900">
+    <section className="relative w-full overflow-x-hidden flex items-center bg-stone-900">
       {/* Background with warm golden hour photographer image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center md:bg-[center_top]"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?auto=format&fit=crop&w=2000&q=85')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?auto=format&fit=crop&w=1400&q=75')`,
         }}
       >
-        {/* Warm photographic sunset gradient overlay matching the original landing page */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/35 md:from-amber-950/80 md:via-amber-950/45 md:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-black/40" />
+        {/* Warm photographic sunset gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/55 md:from-amber-950/85 md:via-stone-950/75 md:to-stone-950/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-black/40" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 z-10 text-white w-full">
-        <div className="max-w-2xl lg:max-w-3xl">
-          {/* Eyebrow */}
-          <p className="text-amber-300 font-semibold text-sm sm:text-base tracking-wide uppercase mb-3 flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-amber-400 inline" />
-            Deja de adivinar los ajustes de tu cámara — empieza a clavar cada toma.
-          </p>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 lg:py-20 z-10 text-white w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          {/* Left Column: Headline, Subheadline, 3 Indicators, CTA */}
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6 min-w-0">
+            {/* Main Headline */}
+            <h1 className="text-2xl sm:text-4xl lg:text-[2.75rem] font-black text-white tracking-tight leading-[1.16] drop-shadow-md">
+              Domina los ajustes de tu cámara y{' '}
+              <span className="text-amber-400">fotografía con confianza</span>, sin depender del modo automático.
+            </h1>
 
-          {/* Main Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12] mb-6 drop-shadow-md">
-            Especial Online: <br className="hidden sm:inline" />
-            <span className="text-white">La Colección Completa de </span>
-            <span className="text-amber-400 underline decoration-amber-500/60 decoration-wavy decoration-2">Guías Rápidas</span> de Fotografía
-          </h1>
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg text-stone-200 leading-relaxed font-normal max-w-2xl">
+              Descubre una colección de 125 guías visuales de fotografía que te ayudarán a comprender la apertura, velocidad de obturación, ISO, iluminación, composición y mucho más.
+            </p>
 
-          {/* Bullets with orange styling */}
-          <div className="space-y-3.5 mb-8 text-base sm:text-lg text-stone-100 font-medium">
-            <div className="flex items-start gap-3">
-              <span className="text-amber-400 font-black text-xl leading-none select-none">→</span>
-              <p>
-                ¡Nuestro <span className="bg-amber-400 text-stone-950 px-2 py-0.5 rounded font-black text-sm tracking-wide uppercase inline-block shadow-xs">paquete #1</span> de Guías Rápidas (Cheat Sheets)!
-              </p>
-            </div>
+            {/* 3 Indicators below subtitle */}
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-1 text-sm font-semibold text-stone-100">
+              <li className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-3.5 py-2.5 backdrop-blur-xs">
+                <BookOpen className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>125 guías visuales.</span>
+              </li>
+              <li className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-3.5 py-2.5 backdrop-blur-xs">
+                <Zap className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Acceso digital inmediato.</span>
+              </li>
+              <li className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-xl px-3.5 py-2.5 backdrop-blur-xs">
+                <Award className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Ideal para principiantes.</span>
+              </li>
+            </ul>
 
-            <div className="flex items-start gap-3">
-              <span className="text-amber-400 font-black text-xl leading-none select-none">→</span>
-              <p>
-                <strong className="text-white font-extrabold underline decoration-amber-400/50">Confiado</strong> por fotógrafos de todo el mundo.
-              </p>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <span className="text-amber-400 font-black text-xl leading-none select-none">→</span>
-              <p>
-                <strong className="text-white font-extrabold underline decoration-amber-400/50">Varios ejemplares</strong> de guías rápidas entregadas.
-              </p>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <span className="text-amber-400 font-black text-xl leading-none select-none">→</span>
-              <p>
-                <strong>Descarga en cualquier dispositivo o imprímelas.</strong>{' '}
-                <span className="bg-red-600/90 text-white px-2 py-0.5 rounded font-bold text-sm inline-block shadow-xs">
-                  ¡85% de descuento
-                </span>{' '}
-                sobre el precio habitual hoy!
-              </p>
+            {/* Primary CTA Button */}
+            <div className="pt-2 w-full sm:w-auto">
+              <button
+                onClick={onCtaClick}
+                className="w-full sm:w-auto min-h-[56px] bg-gradient-to-r from-[#df5615] to-[#c7450a] hover:from-[#e96222] hover:to-[#df5615] active:scale-[0.99] text-white px-7 sm:px-9 py-4 rounded-xl font-black text-base sm:text-lg tracking-wide shadow-xl transition-colors flex items-center justify-center gap-2.5 cursor-pointer border border-amber-300/40"
+              >
+                <span>VER PLANES Y OFERTAS</span>
+                <ArrowRight className="w-5 h-5 shrink-0" />
+              </button>
             </div>
           </div>
 
-          {/* Quick CTA button */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 w-full">
-            <button
-              onClick={onCtaClick}
-              className="group max-w-full bg-gradient-to-r from-[#df5615] to-[#c7450a] hover:from-[#e96222] hover:to-[#df5615] text-white px-5 sm:px-8 py-4 rounded-xl font-extrabold text-base sm:text-xl shadow-xl hover:shadow-orange-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer border border-amber-300/30"
-            >
-              <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 text-amber-200 shrink-0" />
-              <span>Conseguir la Oferta Flash por Solo $10</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0" />
-            </button>
-            
-            <div className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm text-stone-300">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Descarga inmediata en PDF • Garantía de 30 días</span>
+          {/* Right Column: High-Quality Visual Mockup of the Photography Guides */}
+          <div className="lg:col-span-5 min-w-0">
+            <div className="relative w-full max-w-md mx-auto">
+              {/* Visual 3-sheet layered product mockup */}
+              <div className="relative flex items-center justify-center py-2 sm:py-4">
+                {/* Left tilted guide */}
+                <div className="w-[34%] -mr-6 sm:-mr-8 transform -rotate-6 rounded-xl overflow-hidden shadow-2xl border border-stone-300/80 bg-white z-10">
+                  <img
+                    src="/assets/aistudio/4_ccec4ea4.png"
+                    alt="Guía rápida de fotografía: Auroras Boreales"
+                    className="w-full h-auto block"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+
+                {/* Center main guide */}
+                <div className="w-[46%] rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.65)] border-2 border-amber-400 bg-white z-20">
+                  <img
+                    src="/assets/aistudio/7_c1bb04b7.png"
+                    alt="Guía rápida de fotografía: La Vía Láctea"
+                    className="w-full h-auto block"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                  />
+                </div>
+
+                {/* Right tilted guide */}
+                <div className="w-[34%] -ml-6 sm:-ml-8 transform rotate-6 rounded-xl overflow-hidden shadow-2xl border border-stone-300/80 bg-white z-10">
+                  <img
+                    src="/assets/aistudio/5_d7927831.png"
+                    alt="Guía rápida de fotografía: Relámpagos"
+                    className="w-full h-auto block"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              {/* Clean product caption badge */}
+              <div className="mt-3 flex items-center justify-center gap-2 text-xs sm:text-sm text-stone-200 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Formato PDF visual para móvil, tablet o impresión</span>
+              </div>
             </div>
           </div>
         </div>

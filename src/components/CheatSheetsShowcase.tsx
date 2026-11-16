@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Eye, Sparkles, Camera } from 'lucide-react';
+import { Check, ZoomIn, Camera, ChevronDown, ChevronUp, Compass, Sliders, Frame, Sun } from 'lucide-react';
 import {
   ADVENTURE_TOPICS_SPANISH,
   CAMERA_FUNDAMENTALS_TOPICS_SPANISH,
@@ -7,6 +7,7 @@ import {
   LIGHTING_TOPICS_SPANISH,
   SAMPLE_PHOTOS
 } from '../data/cheatSheetsData';
+import { REAL_CHEAT_SHEETS } from './CheatSheetPreviewModal';
 import { PhotoSample } from '../types';
 
 interface CheatSheetsShowcaseProps {
@@ -18,282 +19,295 @@ type TabKey = 'adventure' | 'camera' | 'composition' | 'lighting';
 
 export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhotoClick, onPreviewSheet }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('adventure');
+  const [showAllTopics, setShowAllTopics] = useState(false);
 
-  const tabs = [
-    { id: 'adventure' as TabKey, label: '42 Guías de Fotografía de Aventura', count: 42 },
-    { id: 'camera' as TabKey, label: '22 Guías de Fundamentos de Cámara', count: 22 },
-    { id: 'composition' as TabKey, label: '22 Guías de Composición Crítica', count: 22 },
-    { id: 'lighting' as TabKey, label: '43 Guías de Iluminación Fotográfica', count: 43 },
+  const categories: {
+    id: TabKey;
+    count: number;
+    shortTitle: string;
+    fullTitle: string;
+    subtitle: string;
+    tag: string;
+    imageUrl: string;
+    icon: React.ReactNode;
+    topics: string[];
+  }[] = [
+    {
+      id: 'adventure',
+      count: 42,
+      shortTitle: 'Fotografía de Aventura',
+      fullTitle: '42 Guías de Fotografía de Aventura',
+      subtitle: 'Ajustes precisos para paisajes, nocturnas, clima extremo y viajes inolvidables.',
+      tag: 'Aventura & Viajes',
+      imageUrl: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=75',
+      icon: <Compass className="w-4 h-4" />,
+      topics: ADVENTURE_TOPICS_SPANISH,
+    },
+    {
+      id: 'lighting',
+      count: 43,
+      shortTitle: 'Iluminación Fotográfica',
+      fullTitle: '43 Guías de Iluminación Fotográfica',
+      subtitle: 'Domina luz natural, hora dorada, flash de mano, modificadores y esquemas de estudio.',
+      tag: 'Control de Luz',
+      imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=75',
+      icon: <Sun className="w-4 h-4" />,
+      topics: LIGHTING_TOPICS_SPANISH,
+    },
+    {
+      id: 'composition',
+      count: 22,
+      shortTitle: 'Composición Crítica',
+      fullTitle: '22 Guías de Composición Crítica',
+      subtitle: 'Entrena tu ojo con reglas visuales, líneas guía, simetría, color y equilibrio.',
+      tag: 'Mirada Creativa',
+      imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=75',
+      icon: <Frame className="w-4 h-4" />,
+      topics: COMPOSITION_TOPICS_SPANISH,
+    },
+    {
+      id: 'camera',
+      count: 22,
+      shortTitle: 'Fundamentos de Cámara',
+      fullTitle: '22 Guías de Fundamentos de Cámara',
+      subtitle: 'Domina apertura, velocidad, ISO, enfoque, medición e histograma sin modo automático.',
+      tag: 'Control Técnico',
+      imageUrl: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=75',
+      icon: <Sliders className="w-4 h-4" />,
+      topics: CAMERA_FUNDAMENTALS_TOPICS_SPANISH,
+    },
   ];
 
-  const getActiveTopics = () => {
-    switch (activeTab) {
-      case 'adventure':
-        return ADVENTURE_TOPICS_SPANISH;
-      case 'camera':
-        return CAMERA_FUNDAMENTALS_TOPICS_SPANISH;
-      case 'composition':
-        return COMPOSITION_TOPICS_SPANISH;
-      case 'lighting':
-        return LIGHTING_TOPICS_SPANISH;
-    }
-  };
-
-  const getTabDescription = () => {
-    switch (activeTab) {
-      case 'adventure':
-        return 'Para las situaciones fotográficas más desafiantes que puedas encontrar en tus viajes y expediciones, tales como...';
-      case 'camera':
-        return 'Domina los controles y botones esenciales de tu equipo para disparar en manual con total soltura, tales como...';
-      case 'composition':
-        return 'Entrena tu ojo para encontrar encuadres potentes, guiar la mirada del espectador y crear impacto visual, tales como...';
-      case 'lighting':
-        return 'Aprende a esculpir con luz natural, modificadores y flashes para obtener tomas nítidas en cualquier condición, tales como...';
-    }
-  };
+  const activeCategory = categories.find((c) => c.id === activeTab) || categories[0];
+  const visibleTopics = showAllTopics ? activeCategory.topics : activeCategory.topics.slice(0, 6);
 
   return (
-    <section id="temas-cubiertos" className="w-full overflow-x-hidden bg-[#fbf9f6] py-16 sm:py-24 border-b border-stone-200">
+    <section id="temas-cubiertos" className="w-full overflow-x-hidden bg-[#fbf9f6] py-14 sm:py-22 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Title */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight leading-tight mb-4">
-            125 Guías Rápidas <br className="hidden sm:inline" />
-            <span className="text-[#df5615]">¡Para Dominar los Temas Clave!</span>
+        {/* Section Title & Subtitle */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <span className="inline-block text-xs font-black uppercase tracking-widest text-[#df5615] bg-orange-100/80 px-3.5 py-1 rounded-full border border-orange-200 mb-3">
+            Colección de 125 Guías Visuales
+          </span>
+          <h2 className="text-2xl sm:text-4xl md:text-[2.65rem] font-black text-stone-900 tracking-tight leading-tight mb-4">
+            Todo lo que necesitas para comprender mejor tu cámara,{' '}
+            <span className="text-[#df5615]">en un solo lugar.</span>
           </h2>
-          <p className="text-stone-600 text-base sm:text-lg">
-            Todo lo que necesitas saber antes de presionar el obturador, condensado en fichas visuales de alta precisión técnica.
+          <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
+            Explora una colección de guías rápidas diseñadas para consultar, aprender y poner en práctica.
           </p>
         </div>
 
-        {/* Real Cheat Sheets Fan Visual Showcase */}
-        <div className="relative w-full max-w-4xl mx-auto mb-16 text-center">
-          <div className="relative block w-full max-w-full cursor-pointer group" onClick={() => onPreviewSheet(2)}>
-            {/* Visual Fan with the 5 Authentic Product Images */}
-            <div className="relative z-10 w-full max-w-full flex items-center justify-center -space-x-7 sm:-space-x-12 md:-space-x-16 py-6 px-1 sm:px-2 overflow-hidden">
-              {/* Card 1: 01 Auroras boreales */}
-              <div 
-                onClick={(e) => { e.stopPropagation(); onPreviewSheet(0); }}
-                className="w-20 sm:w-48 md:w-56 bg-white rounded-xl shadow-xl overflow-hidden border border-stone-300 transform -rotate-12 hover:-rotate-4 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 cursor-pointer"
-                title="Ver ficha: 01 Auroras boreales"
-              >
-                <img 
-                  src="/assets/aistudio/4_ccec4ea4.png" 
-                  alt="Guía 01 Auroras boreales" 
-                  className="w-full h-auto block select-none pointer-events-none"
-                  loading="eager"
-                />
-              </div>
-
-              {/* Card 2: 02 Relámpagos */}
-              <div 
-                onClick={(e) => { e.stopPropagation(); onPreviewSheet(1); }}
-                className="w-24 sm:w-52 md:w-60 bg-white rounded-xl shadow-2xl overflow-hidden border border-stone-300 transform -rotate-6 hover:-rotate-2 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 z-20 cursor-pointer"
-                title="Ver ficha: 02 Relámpagos"
-              >
-                <img 
-                  src="/assets/aistudio/5_d7927831.png" 
-                  alt="Guía 02 Relámpagos" 
-                  className="w-full h-auto block select-none pointer-events-none"
-                  loading="eager"
-                />
-              </div>
-
-              {/* Card 3: 03 La Vía Láctea (Centerpiece) */}
-              <div 
-                onClick={(e) => { e.stopPropagation(); onPreviewSheet(2); }}
-                className="w-28 sm:w-56 md:w-64 bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-amber-400 transform scale-105 hover:scale-110 hover:z-40 transition-all duration-300 shrink-0 z-30 ring-4 ring-amber-400/30 cursor-pointer"
-                title="Ver ficha: 03 La Vía Láctea"
-              >
-                <img 
-                  src="/assets/aistudio/7_c1bb04b7.png" 
-                  alt="Guía 03 La Vía Láctea" 
-                  className="w-full h-auto block select-none pointer-events-none"
-                  loading="eager"
-                />
-              </div>
-
-              {/* Card 4: 04 Rastros estelares */}
-              <div 
-                onClick={(e) => { e.stopPropagation(); onPreviewSheet(3); }}
-                className="w-24 sm:w-52 md:w-60 bg-white rounded-xl shadow-2xl overflow-hidden border border-stone-300 transform rotate-6 hover:rotate-2 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 z-20 cursor-pointer"
-                title="Ver ficha: 04 Rastros estelares"
-              >
-                <img 
-                  src="/assets/aistudio/6_514c27e5.png" 
-                  alt="Guía 04 Rastros estelares" 
-                  className="w-full h-auto block select-none pointer-events-none"
-                  loading="eager"
-                />
-              </div>
-
-              {/* Card 5: 05 Largas exposiciones diurnas */}
-              <div 
-                onClick={(e) => { e.stopPropagation(); onPreviewSheet(4); }}
-                className="w-20 sm:w-48 md:w-56 bg-white rounded-xl shadow-xl overflow-hidden border border-stone-300 transform rotate-12 hover:rotate-4 hover:scale-105 hover:z-40 transition-all duration-300 shrink-0 cursor-pointer"
-                title="Ver ficha: 05 Largas exposiciones diurnas"
-              >
-                <img 
-                  src="/assets/aistudio/8_b31d448f.png" 
-                  alt="Guía 05 Largas exposiciones diurnas" 
-                  className="w-full h-auto block select-none pointer-events-none"
-                  loading="eager"
-                />
-              </div>
-            </div>
-
-            {/* Click to expand pill */}
-            <div className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#df5615] bg-white px-5 py-2.5 rounded-full shadow-md border border-amber-200 hover:bg-amber-50 transition-colors">
-              <Eye className="w-4 h-4" />
-              <span>Haz clic en cualquier ficha para verla en tamaño completo</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8">
-          {tabs.map((tab) => {
-            const isActive = activeTab === tab.id;
+        {/* 1. VISUAL CATEGORIES OVERVIEW (4 Interactive Category Cards) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          {categories.map((cat) => {
+            const isActive = activeTab === cat.id;
             return (
               <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 sm:px-6 py-3 rounded-lg font-bold text-xs sm:text-sm md:text-base transition-all cursor-pointer shadow-sm ${
+                key={cat.id}
+                onClick={() => {
+                  setActiveTab(cat.id);
+                  setShowAllTopics(false);
+                }}
+                className={`text-left rounded-2xl p-4 sm:p-5 border transition-all cursor-pointer flex flex-col justify-between ${
                   isActive
-                    ? 'bg-[#df5615] text-white shadow-md ring-2 ring-[#df5615]/30'
-                    : 'bg-stone-200/80 hover:bg-stone-300/80 text-stone-700 hover:text-stone-900'
+                    ? 'bg-stone-900 text-white border-[#df5615] ring-2 ring-[#df5615]/30 shadow-lg'
+                    : 'bg-white text-stone-900 border-stone-200 hover:border-stone-300 shadow-xs'
                 }`}
               >
-                {tab.label}
+                <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <span
+                    className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                      isActive ? 'bg-[#df5615] text-white' : 'bg-orange-50 text-[#df5615]'
+                    }`}
+                  >
+                    {cat.icon}
+                  </span>
+                  <span
+                    className={`text-xs font-black uppercase px-2.5 py-0.5 rounded-full ${
+                      isActive
+                        ? 'bg-amber-400 text-stone-950'
+                        : 'bg-stone-100 text-stone-700'
+                    }`}
+                  >
+                    {cat.count} Guías
+                  </span>
+                </div>
+                <h3 className="font-extrabold text-sm sm:text-base leading-snug">
+                  {cat.shortTitle}
+                </h3>
               </button>
             );
           })}
         </div>
 
-        {/* Active Tab Header & Subhead */}
-        <div className="mb-8 text-center max-w-2xl mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-stone-900">
-            {activeTab === 'adventure' && (
-              <>
-                42 Guías de Fotografía de <span className="text-[#df5615]">Aventura</span>
-              </>
-            )}
-            {activeTab === 'camera' && (
-              <>
-                22 Guías de <span className="text-[#df5615]">Fundamentos de Cámara</span>
-              </>
-            )}
-            {activeTab === 'composition' && (
-              <>
-                22 Guías de <span className="text-[#df5615]">Composición Crítica</span>
-              </>
-            )}
-            {activeTab === 'lighting' && (
-              <>
-                43 Guías de <span className="text-[#df5615]">Iluminación Fotográfica</span>
-              </>
-            )}
-          </h3>
-          <p className="text-stone-600 text-sm sm:text-base mt-2">
-            {getTabDescription()}
-          </p>
-        </div>
-
-        {/* Tab Content Box: Left Image & Right 4-column Checklist */}
-        <div className="bg-white rounded-2xl shadow-lg border border-stone-200/90 p-6 sm:p-8 mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left Image Feature (matches screenshot: Northern Lights) */}
-            <div className="lg:col-span-4 rounded-xl overflow-hidden shadow-md group relative">
+        {/* Active Visual Category Detail Card */}
+        <div className="bg-white rounded-2xl shadow-md border border-stone-200 p-5 sm:p-8 mb-14 sm:mb-18">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+            {/* Thematic Category Photo */}
+            <div className="lg:col-span-5 rounded-xl overflow-hidden shadow-md relative">
               <img
-                src={
-                  activeTab === 'adventure'
-                    ? 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80'
-                    : activeTab === 'camera'
-                    ? 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80'
-                    : activeTab === 'composition'
-                    ? 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
-                    : 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
-                }
-                alt="Fotografía temática"
-                className="w-full h-72 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-500"
+                src={activeCategory.imageUrl}
+                alt={activeCategory.fullTitle}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-56 sm:h-72 object-cover block"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 text-white">
                 <span className="text-xs uppercase tracking-wider text-amber-300 font-bold">
-                  {activeTab === 'adventure' ? 'Aventura & Viajes' : activeTab === 'camera' ? 'Control Técnico' : activeTab === 'composition' ? 'Mirada Creativa' : 'Control de Luz'}
+                  {activeCategory.tag}
                 </span>
-                <span className="text-sm font-semibold">
-                  Instrucciones precisas para cada escena
+                <span className="text-sm sm:text-base font-bold">
+                  {activeCategory.fullTitle}
                 </span>
               </div>
             </div>
 
-            {/* Right Checklist Columns (Matches screenshot format) */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2.5 text-xs sm:text-sm text-stone-700">
-                {getActiveTopics().map((topic, idx) => (
-                  <div key={idx} className="flex items-center gap-2 py-1 px-1.5 rounded hover:bg-stone-50 transition-colors">
-                    <span className="w-4 h-4 rounded-full bg-amber-100 text-[#df5615] flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3 stroke-[3]" />
-                    </span>
-                    <span className="font-medium text-stone-800 leading-snug">{topic}</span>
-                  </div>
-                ))}
+            {/* Representative Topics (Concise by default, expandable without hiding collection content) */}
+            <div className="lg:col-span-7 space-y-4 min-w-0">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-stone-900">
+                  {activeCategory.fullTitle}
+                </h3>
+                <p className="text-stone-600 text-sm sm:text-base mt-1.5 leading-relaxed">
+                  {activeCategory.subtitle}
+                </p>
               </div>
+
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-stone-500 block mb-2.5">
+                  {showAllTopics ? 'Todos los temas incluidos:' : 'Ejemplos destacados de esta categoría:'}
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-stone-700">
+                  {visibleTopics.map((topic, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2 py-1.5 px-2.5 rounded-lg bg-stone-50 border border-stone-200/70"
+                    >
+                      <span className="w-4 h-4 rounded-full bg-amber-100 text-[#df5615] flex items-center justify-center shrink-0">
+                        <Check className="w-3 h-3 stroke-[3]" />
+                      </span>
+                      <span className="font-medium text-stone-800 leading-snug">{topic}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {activeCategory.topics.length > 6 && (
+                <button
+                  onClick={() => setShowAllTopics(!showAllTopics)}
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#df5615] hover:text-[#b9430c] transition-colors cursor-pointer pt-1"
+                >
+                  <span>
+                    {showAllTopics
+                      ? 'Mostrar solo ejemplos destacados'
+                      : `Ver los ${activeCategory.topics.length} temas de ${activeCategory.shortTitle}`}
+                  </span>
+                  {showAllTopics ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+              )}
             </div>
           </div>
         </div>
 
-        {/* 9 Sample Photographic Situations Grid (from screenshot) */}
+        {/* 2. REAL PRODUCT SAMPLES WITH ENLARGED VIEW */}
+        <div className="mb-14 sm:mb-18">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <h3 className="text-xl sm:text-3xl font-black text-stone-900 tracking-tight">
+              Ejemplos reales de nuestras guías
+            </h3>
+            <p className="text-stone-600 text-sm sm:text-base mt-1.5">
+              Toca cualquier ficha para abrirla en tamaño completo y comprobar su claridad visual.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-6">
+            {REAL_CHEAT_SHEETS.map((sheet, idx) => (
+              <button
+                key={sheet.id}
+                type="button"
+                onClick={() => onPreviewSheet(idx)}
+                className="group text-left bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl hover:border-[#df5615] transition-all overflow-hidden flex flex-col cursor-pointer"
+              >
+                <div className="relative w-full aspect-[3/4] bg-stone-100 overflow-hidden">
+                  <img
+                    src={sheet.src}
+                    alt={`Guía ${sheet.num}: ${sheet.title}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top block group-hover:scale-[1.03] transition-transform duration-300"
+                  />
+                  <div className="absolute bottom-2.5 right-2.5 bg-stone-900/85 text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+                    <ZoomIn className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Ampliar</span>
+                  </div>
+                </div>
+                <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-xs font-black text-[#df5615] uppercase tracking-wider">
+                      Ficha #{sheet.num}
+                    </span>
+                    <h4 className="font-extrabold text-stone-900 text-sm sm:text-base leading-snug mt-0.5">
+                      {sheet.title}
+                    </h4>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 3. EXISTING PHOTOGRAPHY SCENARIO EXAMPLES */}
         <div>
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
             <div>
-              <h4 className="text-lg sm:text-xl font-bold text-stone-900">
-                Ejemplos Reales de Situaciones Cubiertas
-              </h4>
-              <p className="text-xs sm:text-sm text-stone-500">
-                Haz clic en cualquier fotografía para ver los ajustes recomendados de cámara (apertura, obturación, ISO y lente)
+              <h3 className="text-lg sm:text-2xl font-black text-stone-900">
+                Ejemplos de fotografía y escenarios cubiertos
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-600 mt-0.5">
+                Haz clic en cualquier fotografía para ver los ajustes recomendados (apertura, obturación, ISO y lente).
               </p>
             </div>
-            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold text-[#df5615] bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-              <Sparkles className="w-3.5 h-3.5" />
-              9 Escenas Demostrativas
-            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {SAMPLE_PHOTOS.map((photo) => (
-              <div
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {(['wildflowers', 'lunar-eclipse', 'waterfall-sunset', 'campfire'] as const)
+              .map((id) => SAMPLE_PHOTOS.find((p) => p.id === id))
+              .filter((photo): photo is PhotoSample => Boolean(photo))
+              .map((photo) => (
+              <button
                 key={photo.id}
+                type="button"
                 onClick={() => onPhotoClick(photo)}
-                className="group relative rounded-xl overflow-hidden shadow-md bg-stone-900 cursor-pointer border border-stone-200 hover:shadow-xl transition-all transform hover:-translate-y-1"
+                className="group relative text-left rounded-xl overflow-hidden shadow-md bg-stone-900 cursor-pointer border border-stone-200 hover:shadow-xl transition-all"
               >
                 <div className="aspect-[4/3] w-full overflow-hidden">
                   <img
                     src={photo.imageUrl}
                     alt={photo.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                
+
                 {/* Gradient and information bar */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-3.5 text-white">
-                  <div className="flex items-center justify-between">
-                    <h5 className="font-bold text-sm tracking-wide group-hover:text-amber-300 transition-colors">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-3.5 text-white">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className="font-bold text-sm tracking-wide group-hover:text-amber-300 transition-colors">
                       {photo.title}
-                    </h5>
-                    <span className="text-[10px] bg-white/25 backdrop-blur-xs px-2 py-0.5 rounded font-mono font-semibold">
+                    </h4>
+                    <span className="text-xs bg-black/60 border border-white/20 px-2 py-0.5 rounded font-mono font-semibold shrink-0">
                       {photo.settings.aperture} • {photo.settings.shutterSpeed}
                     </span>
                   </div>
                   <p className="text-xs text-stone-300 truncate mt-0.5">{photo.subtitle}</p>
-                  
-                  {/* Hover hint */}
-                  <div className="mt-2 text-[11px] text-amber-300 font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Camera className="w-3 h-3" />
-                    <span>Ver ficha técnica completa →</span>
+                  <div className="mt-1.5 text-xs text-amber-300 font-semibold flex items-center gap-1">
+                    <Camera className="w-3.5 h-3.5 shrink-0" />
+                    <span>Ver ajustes recomendados →</span>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

@@ -292,37 +292,32 @@ export const TESTIMONIALS: Testimonial[] = [
 export const FAQS: FaqItem[] = [
   {
     id: 'faq-1',
-    question: '¿Cómo se entregan las Guías Rápidas?',
-    answer: 'La entrega es inmediata y 100% digital. Justo tras completar tu pedido recibirás un correo electrónico con tu enlace de acceso instantáneo para descargar el paquete completo en formato PDF de alta resolución. Además, tendrás acceso de por vida y podrás descargarlas de nuevo cuando quieras desde cualquier dispositivo.'
+    question: '¿Para quién está diseñada esta colección?',
+    answer: 'Está diseñada para personas que desean dejar el modo automático y aprender de forma visual cómo configurar su cámara. También resulta muy práctica para quienes ya fotografían y quieren una referencia rápida para consultar ajustes en distintos escenarios.'
   },
   {
     id: 'faq-2',
-    question: '¿En qué formato de archivo vienen las Guías Rápidas?',
-    answer: 'Vienen en formato PDF estándar de calidad profesional vectorial y ultra nítido. Son compatibles con cualquier lector de PDF en computadoras Windows, Mac, iPad, iPhone, dispositivos Android y tablets. Además, están optimizadas para imprimirse perfectamente en hojas A4 o Carta si prefieres llevarlas en papel en tu mochila.'
+    question: '¿Necesito tener experiencia en fotografía?',
+    answer: 'No. Las guías explican de manera clara y visual conceptos esenciales como apertura, velocidad de obturación, ISO, iluminación y composición, permitiéndote aprender paso a paso desde cero.'
   },
   {
     id: 'faq-3',
-    question: '¿Cuál es el mejor tamaño de impresión?',
-    answer: 'Están diseñadas en proporción estándar internacional para imprimirse nítidamente tanto en tamaño Carta (8.5 x 11 pulgadas) como en A4 (210 x 297 mm). También puedes imprimirlas en tamaño de bolsillo A5 o como fichas plastificadas para guardarlas en los compartimentos de tu bolsa fotográfica.'
+    question: '¿Las guías son digitales?',
+    answer: 'Sí. Toda la colección se entrega en formato digital descargable para que puedas consultarla fácilmente desde tu celular, tablet o computadora, o imprimirlas si lo prefieres.'
   },
   {
     id: 'faq-4',
-    question: '¿Quiénes crearon estas guías?',
-    answer: 'Somos un equipo de fotógrafos profesionales y educadores apasionados por la técnica y la enseñanza práctica. Durante años hemos ayudado a millones de fotógrafos en más de 180 países a dominar su cámara y aprender nuevas técnicas a través de tutoriales claros, prácticos y libres de tecnicismos innecesarios.'
+    question: '¿Cómo recibo mis materiales después de comprar?',
+    answer: 'Después de completar tu compra, recibirás acceso digital inmediato a los materiales del plan seleccionado para que puedas descargarlos y empezar a utilizarlos.'
   },
   {
     id: 'faq-5',
-    question: '¿Funcionarán estas guías para mi cámara?',
-    answer: '¡Sí, con total seguridad! Los principios fundamentales de la fotografía —apertura del diafragma, velocidad de obturación, sensibilidad ISO, distancia focal, rango dinámico y enfoque— son universales para cualquier marca y modelo de cámara: Canon, Nikon, Sony, Fujifilm, Olympus, Panasonic Lumix, Leica, Pentax e incluso para teléfonos móviles con controles manuales (Pro RAW).'
+    question: '¿Puedo utilizar las guías con mi cámara?',
+    answer: 'Sí. Los fundamentos de exposición, enfoque, iluminación y composición son universales y se aplican a cualquier cámara que permita configurar sus ajustes.'
   },
   {
     id: 'faq-6',
-    question: '¿Servirán para mi nivel de experiencia?',
-    answer: 'Absolutamente. Si eres principiante, te darán la confianza para abandonar el modo automático desde el primer día con configuraciones probadas paso a paso. Y si eres un fotógrafo intermedio o avanzado, te servirán como una guía de referencia rápida infalible para situaciones técnicas complejas como eclipses, auroras boreales, pintura con luz, astrofotografía y apilamiento de enfoque.'
-  },
-  {
-    id: 'faq-7',
-    question: '¿Hay alguna garantía de devolución de dinero?',
-    answer: 'Sí, cuentas con una garantía incondicional de reembolso del 100% durante 30 días completos. Si por cualquier motivo sientes que estas guías no han mejorado tus fotos o no son exactamente lo que esperabas, simplemente escríbenos a soporte dentro de los 30 días y te devolveremos cada céntimo sin preguntas ni complicaciones.'
+    question: '¿Cómo funciona la garantía de 30 días?',
+    answer: 'Tu compra está protegida por nuestra garantía de 30 días. Si necesitas asistencia o deseas consultar las condiciones de garantía, puedes comunicarte con soporte dentro de ese plazo.'
   }
 ];

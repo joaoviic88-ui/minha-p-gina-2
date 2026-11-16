@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, Sparkles, ChevronLeft, ChevronRight, Shield, ShoppingCart, ZoomIn } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, ChevronLeft, ChevronRight, Shield, ShoppingCart, ZoomIn } from 'lucide-react';
 
 export const REAL_CHEAT_SHEETS = [
   {
@@ -61,9 +61,15 @@ export const CheatSheetPreviewModal: React.FC<CheatSheetPreviewModalProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentIndex(initialIndex);
+    }
+  }, [isOpen, initialIndex]);
+
   if (!isOpen) return null;
 
-  const currentSheet = REAL_CHEAT_SHEETS[currentIndex];
+  const currentSheet = REAL_CHEAT_SHEETS[currentIndex] || REAL_CHEAT_SHEETS[0];
 
   const prev = () => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : REAL_CHEAT_SHEETS.length - 1));
