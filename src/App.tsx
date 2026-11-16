@@ -16,7 +16,6 @@ import { PhotoLightboxModal } from './components/PhotoLightboxModal';
 import { CheatSheetPreviewModal } from './components/CheatSheetPreviewModal';
 import { PolicyModal } from './components/PolicyModal';
 import { PhotoSample } from './types';
-import { navigateToCheckout } from './config/checkoutUrls';
 import { ShoppingCart } from 'lucide-react';
 
 export default function App() {
@@ -59,28 +58,6 @@ export default function App() {
     }
   };
 
-  const handleSelectPlan = (plan: 'basic' | 'complete') => {
-    if (plan === 'basic') {
-      // Exclusively trigger the $15 upgrade popup when clicking Plan Básico
-      setIsUpgradeOpen(true);
-    } else {
-      // Plan Completo ($20) goes directly to complete checkout
-      navigateToCheckout('COMPLETE_CHECKOUT_URL', scrollToPricing);
-    }
-  };
-
-  const handleAcceptUpgrade = () => {
-    setIsUpgradeOpen(false);
-    // User accepts the $15 upgrade offer
-    navigateToCheckout('UPSELL_CHECKOUT_URL', scrollToPricing);
-  };
-
-  const handleDeclineUpgrade = () => {
-    setIsUpgradeOpen(false);
-    // User declines and proceeds with the $10 Plan Básico
-    navigateToCheckout('BASIC_CHECKOUT_URL', scrollToPricing);
-  };
-
   return (
     <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#faf8f5] text-stone-900 font-sans antialiased selection:bg-[#df5615] selection:text-white">
       {/* Sticky Top Flash Sale Announcement Bar */}
@@ -104,7 +81,7 @@ export default function App() {
 
         {/* SEÇÃO 4 — Planos e Preços */}
         <div id="seccion-oferta">
-          <PricingCardSection onSelectPlan={handleSelectPlan} />
+          <PricingCardSection onOpenBasicUpgrade={() => setIsUpgradeOpen(true)} />
         </div>
 
         {/* SEÇÃO 5 — Os 3 Bônus Exclusivos */}
@@ -153,8 +130,6 @@ export default function App() {
       {/* Interactive Modals */}
       <UpgradeModal
         isOpen={isUpgradeOpen}
-        onAcceptUpgrade={handleAcceptUpgrade}
-        onDeclineUpgrade={handleDeclineUpgrade}
         onClose={() => setIsUpgradeOpen(false)}
       />
 

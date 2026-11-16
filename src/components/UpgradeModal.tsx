@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { X, Check, Gift, Sparkles, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { CHECKOUT_URLS } from '../config/checkoutUrls';
 
 interface UpgradeModalProps {
   isOpen: boolean;
-  onAcceptUpgrade: () => void;
-  onDeclineUpgrade: () => void;
   onClose: () => void;
 }
 
 export const UpgradeModal: React.FC<UpgradeModalProps> = ({
   isOpen,
-  onAcceptUpgrade,
-  onDeclineUpgrade,
   onClose,
 }) => {
   // Prevent background scrolling when modal is open
@@ -171,24 +168,24 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
             </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Links */}
           <div className="pt-2 space-y-3">
-            {/* Primary Upgrade CTA */}
-            <button
-              onClick={onAcceptUpgrade}
-              className="w-full min-h-[54px] bg-[#df5615] hover:bg-[#c8480d] text-white py-4 px-5 sm:px-6 rounded-2xl font-black text-sm sm:text-lg tracking-wide shadow-xl transition-colors cursor-pointer flex items-center justify-center gap-2 border-2 border-amber-300 ring-4 ring-orange-500/20"
+            {/* Primary Upgrade CTA ($15) */}
+            <a
+              href={CHECKOUT_URLS.UPSELL_CHECKOUT_URL}
+              className="w-full min-h-[54px] bg-[#df5615] hover:bg-[#c8480d] text-white py-4 px-5 sm:px-6 rounded-2xl font-black text-sm sm:text-lg tracking-wide shadow-xl transition-colors cursor-pointer flex items-center justify-center gap-2 border-2 border-amber-300 ring-4 ring-orange-500/20 no-underline"
             >
               <span>¡SÍ! QUIERO LOS 125 GUÍAS POR SOLO $15</span>
               <ArrowRight className="w-5 h-5 stroke-[2.5] shrink-0" />
-            </button>
+            </a>
 
-            {/* Secondary Decline Option */}
-            <button
-              onClick={onDeclineUpgrade}
-              className="w-full text-stone-500 hover:text-stone-800 text-xs sm:text-sm font-semibold py-2.5 px-4 transition-colors cursor-pointer text-center underline underline-offset-4 decoration-stone-300 hover:decoration-stone-600"
+            {/* Secondary Decline Option ($10) */}
+            <a
+              href={CHECKOUT_URLS.BASIC_CHECKOUT_URL}
+              className="block w-full text-stone-500 hover:text-stone-800 text-xs sm:text-sm font-semibold py-2.5 px-4 transition-colors cursor-pointer text-center underline underline-offset-4 decoration-stone-300 hover:decoration-stone-600"
             >
               No, gracias. Prefiero continuar con el Plan Básico de $10.
-            </button>
+            </a>
           </div>
 
           {/* Guarantee Note */}

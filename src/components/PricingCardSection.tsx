@@ -1,11 +1,12 @@
 import React from 'react';
 import { Check, Sparkles, Gift, ShieldCheck, ArrowRight, Star } from 'lucide-react';
+import { CHECKOUT_URLS } from '../config/checkoutUrls';
 
 interface PricingCardSectionProps {
-  onSelectPlan: (plan: 'basic' | 'complete') => void;
+  onOpenBasicUpgrade: () => void;
 }
 
-export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onSelectPlan }) => {
+export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onOpenBasicUpgrade }) => {
   return (
     <section className="relative w-full py-14 sm:py-22 overflow-x-hidden bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 flex flex-col items-center justify-center border-y border-stone-800">
       <div className="relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-6">
@@ -115,7 +116,8 @@ export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onSelect
             {/* CTA Button */}
             <div className="pt-2">
               <button
-                onClick={() => onSelectPlan('basic')}
+                type="button"
+                onClick={onOpenBasicUpgrade}
                 className="w-full min-h-[54px] bg-stone-900 hover:bg-stone-800 text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2 border border-stone-700"
               >
                 <span>QUIERO EL PLAN BÁSICO</span>
@@ -271,15 +273,15 @@ export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onSelect
               </div>
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Link */}
             <div className="pt-2">
-              <button
-                onClick={() => onSelectPlan('complete')}
-                className="w-full min-h-[56px] bg-gradient-to-r from-[#df5615] to-[#c8480d] hover:from-[#eb601e] hover:to-[#df5615] text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide shadow-xl transition-colors cursor-pointer flex items-center justify-center gap-2 border border-amber-300/40"
+              <a
+                href={CHECKOUT_URLS.COMPLETE_CHECKOUT_URL}
+                className="w-full min-h-[56px] bg-gradient-to-r from-[#df5615] to-[#c8480d] hover:from-[#eb601e] hover:to-[#df5615] text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide shadow-xl transition-colors cursor-pointer flex items-center justify-center gap-2 border border-amber-300/40 no-underline"
               >
                 <span>QUIERO LA COLECCIÓN COMPLETA</span>
                 <ArrowRight className="w-5 h-5 shrink-0" />
-              </button>
+              </a>
             </div>
           </div>
         </div>
