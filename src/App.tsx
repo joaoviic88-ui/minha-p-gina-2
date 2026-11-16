@@ -11,7 +11,6 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { FaqSection } from './components/FaqSection';
 import { DecisionSection } from './components/DecisionSection';
 import { Footer } from './components/Footer';
-import { CheckoutModal } from './components/CheckoutModal';
 import { UpgradeModal } from './components/UpgradeModal';
 import { PhotoLightboxModal } from './components/PhotoLightboxModal';
 import { CheatSheetPreviewModal } from './components/CheatSheetPreviewModal';
@@ -25,9 +24,7 @@ export default function App() {
   const [totalSeconds, setTotalSeconds] = useState(3 * 3600 + 15 * 60 + 51);
 
   // Modals state
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isUpgradeOpen, setIsUpgradeOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<'basic' | 'complete' | 'upgrade'>('complete');
   const [activePhoto, setActivePhoto] = useState<PhotoSample | null>(null);
   const [isCheatSheetPreviewOpen, setIsCheatSheetPreviewOpen] = useState(false);
   const [previewSheetIndex, setPreviewSheetIndex] = useState(2);
@@ -55,45 +52,33 @@ export default function App() {
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
 
+  const scrollToPricing = () => {
+    const pricingEl = document.getElementById('seccion-oferta');
+    if (pricingEl) {
+      pricingEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleSelectPlan = (plan: 'basic' | 'complete') => {
     if (plan === 'basic') {
-      // Prompt requirement: exclusively trigger the $15 upgrade popup when clicking Plan Básico
+      // Exclusively trigger the $15 upgrade popup when clicking Plan Básico
       setIsUpgradeOpen(true);
     } else {
       // Plan Completo ($20) goes directly to complete checkout
-      navigateToCheckout('COMPLETE_CHECKOUT_URL', () => {
-        setSelectedPlan('complete');
-        setIsCheckoutOpen(true);
-      });
+      navigateToCheckout('COMPLETE_CHECKOUT_URL', scrollToPricing);
     }
   };
 
   const handleAcceptUpgrade = () => {
     setIsUpgradeOpen(false);
     // User accepts the $15 upgrade offer
-    navigateToCheckout('UPSELL_CHECKOUT_URL', () => {
-      setSelectedPlan('upgrade');
-      setIsCheckoutOpen(true);
-    });
+    navigateToCheckout('UPSELL_CHECKOUT_URL', scrollToPricing);
   };
 
   const handleDeclineUpgrade = () => {
     setIsUpgradeOpen(false);
     // User declines and proceeds with the $10 Plan Básico
-    navigateToCheckout('BASIC_CHECKOUT_URL', () => {
-      setSelectedPlan('basic');
-      setIsCheckoutOpen(true);
-    });
-  };
-
-  const scrollToPricing = () => {
-    const pricingEl = document.getElementById('seccion-oferta');
-    if (pricingEl) {
-      pricingEl.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      setSelectedPlan('complete');
-      setIsCheckoutOpen(true);
-    }
+    navigateToCheckout('BASIC_CHECKOUT_URL', scrollToPricing);
   };
 
   return (
@@ -173,23 +158,21 @@ export default function App() {
         onClose={() => setIsUpgradeOpen(false)}
       />
 
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        plan={selectedPlan}
-        onClose={() => setIsCheckoutOpen(false)}
-      />
-
       <PhotoLightboxModal
         photo={activePhoto}
         onClose={() => setActivePhoto(null)}
-        onGetDeal={() => scrollToPricing()
+        onGetDeal={() => {
+          setTimeout(() => scrollToPricing(), 60);
+        }}
       />
 
       <CheatSheetPreviewModal
         isOpen={isCheatSheetPreviewOpen}
         initialIndex={previewSheetIndex}
         onClose={() => setIsCheatSheetPreviewOpen(false)}
-        onGetDeal={() => scrollToPricing()
+        onGetDeal={() => {
+          setTimeout(() => scrollToPricing(), 60);
+        }}
       />
 
       <PolicyModal
