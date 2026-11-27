@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
-import { Check, ZoomIn, Camera, ChevronDown, ChevronUp, Compass, Sliders, Frame, Sun } from 'lucide-react';
+import { Check, ZoomIn, ChevronDown, ChevronUp, Compass, Sliders, Frame, Sun } from 'lucide-react';
 import {
   ADVENTURE_TOPICS_SPANISH,
   CAMERA_FUNDAMENTALS_TOPICS_SPANISH,
   COMPOSITION_TOPICS_SPANISH,
-  LIGHTING_TOPICS_SPANISH,
-  SAMPLE_PHOTOS
+  LIGHTING_TOPICS_SPANISH
 } from '../data/cheatSheetsData';
 import { REAL_CHEAT_SHEETS } from './CheatSheetPreviewModal';
-import { PhotoSample } from '../types';
 
 interface CheatSheetsShowcaseProps {
-  onPhotoClick: (photo: PhotoSample) => void;
   onPreviewSheet: (index?: number) => void;
 }
 
 type TabKey = 'adventure' | 'camera' | 'composition' | 'lighting';
 
-export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhotoClick, onPreviewSheet }) => {
+export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPreviewSheet }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('adventure');
   const [showAllTopics, setShowAllTopics] = useState(false);
 
@@ -210,8 +207,8 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
           </div>
         </div>
 
-        {/* 2. REAL PRODUCT SAMPLES WITH ENLARGED VIEW */}
-        <div className="mb-14 sm:mb-18">
+        {/* 2. REAL PRODUCT SAMPLES WITH ENLARGED VIEW (4 SHEETS) */}
+        <div>
           <div className="text-center max-w-2xl mx-auto mb-8">
             <h3 className="text-xl sm:text-3xl font-black text-stone-900 tracking-tight">
               Ejemplos reales de nuestras guías
@@ -221,7 +218,7 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
             {REAL_CHEAT_SHEETS.map((sheet, idx) => (
               <button
                 key={sheet.id}
@@ -250,61 +247,6 @@ export const CheatSheetsShowcase: React.FC<CheatSheetsShowcaseProps> = ({ onPhot
                     <h4 className="font-extrabold text-stone-900 text-sm sm:text-base leading-snug mt-0.5">
                       {sheet.title}
                     </h4>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 3. EXISTING PHOTOGRAPHY SCENARIO EXAMPLES */}
-        <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-            <div>
-              <h3 className="text-lg sm:text-2xl font-black text-stone-900">
-                Ejemplos de fotografía y escenarios cubiertos
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 mt-0.5">
-                Haz clic en cualquier fotografía para ver los ajustes recomendados (apertura, obturación, ISO y lente).
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {(['wildflowers', 'lunar-eclipse', 'waterfall-sunset', 'campfire'] as const)
-              .map((id) => SAMPLE_PHOTOS.find((p) => p.id === id))
-              .filter((photo): photo is PhotoSample => Boolean(photo))
-              .map((photo) => (
-              <button
-                key={photo.id}
-                type="button"
-                onClick={() => onPhotoClick(photo)}
-                className="group relative text-left rounded-xl overflow-hidden shadow-md bg-stone-900 cursor-pointer border border-stone-200 hover:shadow-xl transition-all"
-              >
-                <div className="aspect-[4/3] w-full overflow-hidden">
-                  <img
-                    src={photo.imageUrl}
-                    alt={photo.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Gradient and information bar */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-3.5 text-white">
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="font-bold text-sm tracking-wide group-hover:text-amber-300 transition-colors">
-                      {photo.title}
-                    </h4>
-                    <span className="text-xs bg-black/60 border border-white/20 px-2 py-0.5 rounded font-mono font-semibold shrink-0">
-                      {photo.settings.aperture} • {photo.settings.shutterSpeed}
-                    </span>
-                  </div>
-                  <p className="text-xs text-stone-300 truncate mt-0.5">{photo.subtitle}</p>
-                  <div className="mt-1.5 text-xs text-amber-300 font-semibold flex items-center gap-1">
-                    <Camera className="w-3.5 h-3.5 shrink-0" />
-                    <span>Ver ajustes recomendados →</span>
                   </div>
                 </div>
               </button>

@@ -29,20 +29,6 @@ export const REAL_CHEAT_SHEETS = [
     title: 'Rastros estelares',
     src: '/assets/aistudio/6_514c27e5.png',
     desc: 'Líneas de luz del movimiento aparente de estrellas. Apilado de 60 a 200 fotos de 30s.'
-  },
-  {
-    id: '05',
-    num: '05',
-    title: 'Largas exposiciones diurnas',
-    src: '/assets/aistudio/8_b31d448f.png',
-    desc: 'Suaviza agua, nubes y movimiento con filtros ND de 3 a 10 pasos a plena luz del día.'
-  },
-  {
-    id: '06',
-    num: '06',
-    title: 'Cascadas',
-    src: '/assets/aistudio/9_6d7f7c20.png',
-    desc: 'Efecto sedoso del agua en movimiento con exposiciones de 0,5 a 2 s, polarizador y trípode.'
   }
 ];
 
@@ -173,7 +159,7 @@ export const CheatSheetPreviewModal: React.FC<CheatSheetPreviewModalProps> = ({
             className="w-full sm:w-auto bg-[#df5615] hover:bg-[#c8480d] text-white px-6 py-2.5 rounded-xl font-black text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer transition-all"
           >
             <ShoppingCart className="w-4 h-4" />
-            <span>Obtener las 125 Guías por Solo $20</span>
+            <span>Obtener las 125 Guías por Solo $7</span>
           </button>
         </div>
       </div>

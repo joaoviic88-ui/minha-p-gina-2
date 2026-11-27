@@ -1,15 +1,11 @@
 import React from 'react';
-import { Check, Sparkles, Gift, ShieldCheck, ArrowRight, Star } from 'lucide-react';
+import { Check, Sparkles, Gift, ShieldCheck, ArrowRight, Tag } from 'lucide-react';
 import { CHECKOUT_URLS } from '../config/checkoutUrls';
 
-interface PricingCardSectionProps {
-  onOpenBasicUpgrade: () => void;
-}
-
-export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onOpenBasicUpgrade }) => {
+export const PricingCardSection: React.FC = () => {
   return (
     <section className="relative w-full py-14 sm:py-22 overflow-x-hidden bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 flex flex-col items-center justify-center border-y border-stone-800">
-      <div className="relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-6">
+      <div className="relative z-10 max-w-4xl w-full mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <span className="inline-flex items-center gap-2 bg-amber-500/15 text-amber-300 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider border border-amber-400/30 mb-3">
@@ -17,124 +13,21 @@ export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onOpenBa
             <span>Oferta Especial Online</span>
           </span>
           <h2 className="text-2xl sm:text-4xl md:text-[2.65rem] font-black text-white tracking-tight leading-tight">
-            Elige el plan ideal para llevar tu fotografía{' '}
-            <span className="text-[#df5615]">al siguiente nivel.</span>
+            Llévate <span className="text-[#df5615]">FOTOGRAFÍA SIN ADIVINAR</span> y domina tu cámara hoy mismo.
           </h2>
           <p className="text-stone-300 text-base sm:text-lg mt-3 leading-relaxed">
-            Comienza con las guías esenciales o accede a la colección completa con materiales exclusivos.
+            Accede a la colección completa de 125 guías visuales y los 3 bonos exclusivos con precio promocional.
           </p>
         </div>
 
-        {/* Modern 2-Card Pricing Grid (Stacked vertically on mobile, side-by-side on desktop) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
-          {/* ========================================================= */}
-          {/* CARD 1: PLAN BÁSICO ($10)                                 */}
-          {/* ========================================================= */}
-          <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col justify-between border border-stone-200 relative">
-            <div>
-              {/* Header Info */}
-              <div className="border-b border-stone-100 pb-5 mb-5">
-                <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <span className="text-xs font-black uppercase tracking-widest text-stone-500">
-                    PLAN BÁSICO
-                  </span>
-                  <span className="text-xs font-bold bg-stone-100 text-stone-600 px-2.5 py-0.5 rounded-full">
-                    Esencial
-                  </span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black text-stone-900 tracking-tight leading-snug">
-                  85 GUÍAS RÁPIDAS DE FOTOGRAFÍA
-                </h3>
-                <p className="text-sm text-stone-600 mt-2 leading-relaxed">
-                  El contenido esencial para mejorar tus conocimientos fotográficos y aprender nuevas técnicas.
-                </p>
-
-                {/* Price */}
-                <div className="mt-5 flex items-baseline gap-2.5">
-                  <span className="text-4xl sm:text-5xl font-black text-stone-900 tracking-tight">
-                    $10
-                  </span>
-                  <span className="text-xs font-bold uppercase text-stone-500">
-                    Pago único
-                  </span>
-                </div>
-              </div>
-
-              {/* Materiales incluidos (85 guías) */}
-              <div className="mb-6">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-stone-900 block mb-3">
-                  Materiales incluidos (85 guías):
-                </span>
-                <ul className="space-y-2.5 text-sm text-stone-700">
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                    </span>
-                    <span className="font-semibold text-stone-800">
-                      42 Guías de Fotografía de Aventura
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                    </span>
-                    <span className="font-semibold text-stone-800">
-                      43 Guías de Iluminación Fotográfica
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Beneficios con iconos de confirmación */}
-              <div className="border-t border-stone-100 pt-5 mb-6">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-stone-500 block mb-3">
-                  Beneficios del Plan:
-                </span>
-                <ul className="space-y-2.5 text-sm text-stone-700">
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
-                    </span>
-                    <span>Acceso de por vida</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
-                    </span>
-                    <span>Materiales 100% digitales</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
-                    </span>
-                    <span>Acceso inmediato después de la compra</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="pt-2">
-              <button
-                type="button"
-                onClick={onOpenBasicUpgrade}
-                className="w-full min-h-[54px] bg-stone-900 hover:bg-stone-800 text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2 border border-stone-700"
-              >
-                <span>QUIERO EL PLAN BÁSICO</span>
-                <ArrowRight className="w-5 h-5 shrink-0" />
-              </button>
-            </div>
-          </div>
-
-          {/* ========================================================= */}
-          {/* CARD 2: PLAN COMPLETO ($20) — DESTAQUE PRINCIPAL          */}
-          {/* ========================================================= */}
-          <div className="bg-white rounded-3xl shadow-[0_20px_50px_-15px_rgba(223,86,21,0.4)] p-6 sm:p-8 flex flex-col justify-between border-2 border-[#df5615] relative ring-4 ring-orange-500/20">
-            {/* Etiqueta Visual: MÁS VENDIDO */}
+        {/* Single Centered Offer Card */}
+        <div className="max-w-xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-[0_20px_50px_-15px_rgba(223,86,21,0.45)] p-6 sm:p-8 flex flex-col justify-between border-2 border-[#df5615] relative ring-4 ring-orange-500/20">
+            {/* Top Tag */}
             <div className="absolute -top-4 inset-x-0 flex justify-center">
               <span className="bg-gradient-to-r from-[#df5615] to-amber-500 text-white font-black text-xs sm:text-sm uppercase tracking-widest px-5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 border border-amber-200">
-                <Star className="w-3.5 h-3.5 fill-current shrink-0" />
-                <span>MÁS VENDIDO</span>
+                <Tag className="w-3.5 h-3.5 shrink-0" />
+                <span>PRECIO PROMOCIONAL HOY</span>
               </span>
             </div>
 
@@ -143,10 +36,10 @@ export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onOpenBa
               <div className="border-b border-stone-100 pb-5 mb-5 pt-2">
                 <div className="flex items-center justify-between gap-2 mb-1.5">
                   <span className="text-xs font-black uppercase tracking-widest text-[#df5615]">
-                    PLAN COMPLETO
+                    FOTOGRAFÍA SIN ADIVINAR
                   </span>
                   <span className="text-xs font-black bg-orange-100 text-[#df5615] px-2.5 py-0.5 rounded-full uppercase">
-                    Mejor Valor
+                    Colección Completa
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-stone-900 tracking-tight leading-snug">
@@ -157,17 +50,36 @@ export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onOpenBa
                   La colección definitiva para fotógrafos que quieren dominar diferentes aspectos de la fotografía, desde la iluminación y la composición hasta el manejo de la cámara.
                 </p>
 
-                {/* Price */}
-                <div className="mt-5 flex items-baseline gap-2.5 flex-wrap">
-                  <span className="text-4xl sm:text-5xl font-black text-stone-900 tracking-tight">
-                    $20
-                  </span>
-                  <span className="text-xs font-extrabold uppercase text-[#df5615] bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200">
-                    Solo $10 más
-                  </span>
-                  <span className="text-xs font-bold uppercase text-stone-500 ml-auto">
-                    Pago único
-                  </span>
+                {/* Promotional Pricing Block */}
+                <div className="mt-5 bg-stone-50 border border-stone-200 rounded-2xl p-4 sm:p-5">
+                  <div className="inline-flex items-center gap-1.5 bg-orange-100 text-[#df5615] text-xs font-black px-3 py-1 rounded-full mb-3">
+                    <span>Antes: $20 → Ahora: $7</span>
+                  </div>
+
+                  <div className="flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <span className="block text-xs font-bold uppercase tracking-wider text-stone-500">
+                        Precio anterior
+                      </span>
+                      <span className="text-xl sm:text-2xl font-bold text-red-500/85 line-through decoration-red-500 decoration-2">
+                        $20
+                      </span>
+                    </div>
+
+                    <div className="text-left sm:text-right">
+                      <span className="block text-xs font-black uppercase tracking-wider text-stone-700 mb-0.5">
+                        Precio promocional
+                      </span>
+                      <div className="flex items-baseline gap-2.5 sm:justify-end">
+                        <span className="text-6xl sm:text-7xl font-black text-[#df5615] tracking-tight leading-none">
+                          $7
+                        </span>
+                        <span className="text-xs font-extrabold uppercase text-stone-600">
+                          Pago único
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -224,7 +136,7 @@ export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onOpenBa
                   </span>
                 </div>
                 <p className="text-xs text-amber-900 font-medium mb-2.5">
-                  Incluidos gratuitamente al adquirir el Plan Completo:
+                  Incluidos gratuitamente al adquirir Fotografía Sin Adivinar:
                 </p>
                 <ol className="space-y-1.5 text-xs sm:text-sm text-stone-800 font-semibold list-decimal list-inside">
                   <li>Guía Rápida: Cómo Interpretar el Histograma</li>
@@ -276,10 +188,10 @@ export const PricingCardSection: React.FC<PricingCardSectionProps> = ({ onOpenBa
             {/* CTA Link */}
             <div className="pt-2">
               <a
-                href={CHECKOUT_URLS.COMPLETE_CHECKOUT_URL}
-                className="w-full min-h-[56px] bg-gradient-to-r from-[#df5615] to-[#c8480d] hover:from-[#eb601e] hover:to-[#df5615] text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide shadow-xl transition-colors cursor-pointer flex items-center justify-center gap-2 border border-amber-300/40 no-underline"
+                href={CHECKOUT_URLS.MAIN_CHECKOUT_URL}
+                className="animate-cta-pulse w-full min-h-[56px] bg-gradient-to-r from-[#df5615] to-[#c8480d] hover:from-[#eb601e] hover:to-[#df5615] text-white py-4 px-6 rounded-2xl font-black text-base sm:text-lg tracking-wide shadow-xl transition-colors cursor-pointer flex items-center justify-center gap-2 border border-amber-300/40 no-underline"
               >
-                <span>QUIERO LA COLECCIÓN COMPLETA</span>
+                <span>QUIERO FOTOGRAFÍA SIN ADIVINAR POR $7</span>
                 <ArrowRight className="w-5 h-5 shrink-0" />
               </a>
             </div>
